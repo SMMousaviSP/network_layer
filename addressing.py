@@ -58,3 +58,14 @@ def ip_list_to_ip_binary(ip_list):
     for i, part in enumerate(ip_list):
         ip_binary[i] = [bool(x) for x in [int(y) for y in f"{part:b}"]]
     return normalize_ip_binary(ip_binary)
+
+
+def ip_binary_to_ip_list(ip_binary):
+    """ Change list of parts of a binary IP to integer
+
+    :param ip_binary: List of parts of a binary IP
+    :type ip_binary: list
+    :return: List of parts of an IP in integer
+    :rtype: list
+    """
+    return [binary_to_integer(x) for x in ip_binary]
