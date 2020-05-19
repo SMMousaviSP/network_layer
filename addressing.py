@@ -2,6 +2,22 @@
 """
 
 
+def normalize_ip_binary(ip_list):
+    """ Make each part of binary IP 8 bit.
+
+    :param ip_list: List of parts of an IP in binary
+    :type ip_list: list
+    :return: List of parts of an IP in binary, which each part is exactly 8 bit
+    :rtype: list
+    """
+    for i, part in enumerate(ip_list):
+        remaining_zero = 8 - len(part)
+        if remaining_zero > 0:
+            for _ in range(remaining_zero):
+                ip_list[i].insert(0, False)
+    return ip_list
+
+
 def ip_string_to_ip_list(ip_string):
     """ Change raw IP address to list of each part.
 
@@ -24,4 +40,4 @@ def ip_list_to_ip_binary(ip_list):
     ip_binary = [[] for _ in range(4)]
     for i, part in enumerate(ip_list):
         ip_binary[i] = [bool(x) for x in [int(y) for y in f"{part:b}"]]
-    return ip_binary
+    return normalize_ip_binary(ip_binary)
