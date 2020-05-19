@@ -18,6 +18,23 @@ def normalize_ip_binary(ip_list):
     return ip_list
 
 
+def binary_to_integer(binary_list):
+    """ Change binary to integer.
+
+    :param binary_list: List of several bits
+    :type binary_list: list
+    :return: int
+    :rtype: Decimal number of binary list
+    """
+    summation = 0
+    base = len(binary_list) - 1
+    for i, bit in enumerate(binary_list):
+        if not bit:
+            continue
+        summation += 2 ** (base - i)
+    return summation
+
+
 def ip_string_to_ip_list(ip_string):
     """ Change raw IP address to list of each part.
 
