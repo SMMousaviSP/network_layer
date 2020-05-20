@@ -140,6 +140,26 @@ def mask_ip(ip_string, mask_string):
     return ip_binary_to_ip_string(network_ip)
 
 
+def change_prefix_to_mask(prefix):
+    """ TODO
+
+    :param prefix: [description]
+    :type prefix: [type]
+    :return: [description]
+    :rtype: [type]
+    """
+    mask_binary = [[False for _ in range(8)] for _ in range(4)]
+    k = 0
+    for i in range(4):
+        for j in range(8):
+            if k < prefix:
+                mask_binary[i][j] = True
+                k += 1
+            else:
+                return ip_binary_to_ip_string(mask_binary)
+    return ip_binary_to_ip_string(mask_binary)
+
+
 def ip_class(ip_string):
     """ TODO
 
