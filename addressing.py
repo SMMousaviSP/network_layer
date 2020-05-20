@@ -71,6 +71,17 @@ def ip_binary_to_ip_list(ip_binary):
     return [binary_to_integer(x) for x in ip_binary]
 
 
+def ip_list_to_ip_string(ip_list):
+    """ Change list of parts of an IP to string.
+
+    :param ip_list: List of parts of an IP
+    :type ip_list: list
+    :return: IP in string format
+    :rtype: str
+    """
+    return '.'.join([str(x) for x in ip_list])
+
+
 def ip_string_to_ip_binary(ip_string):
     """ Change raw IP to binary IP.
 
