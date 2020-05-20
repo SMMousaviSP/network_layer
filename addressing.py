@@ -190,6 +190,48 @@ def host_count_by_mask(mask_string):
     return 2 ** available_bit(mask_string)
 
 
+def ip_range(ip_string, mask_string):
+    """ TODO
+
+    :param ip_string: [description]
+    :type ip_string: [type]
+    :param mask_string: [description]
+    :type mask_string: [type]
+    :return: [description]
+    :rtype: [type]
+    """
+    ip_binary = ip_string_to_ip_binary(ip_string)
+    host_bit_count = available_bit(mask_string)
+    ip_range_list = [[], []]
+    k = 0
+    flag = False
+    for i in range(4):
+        for j in range(8):
+            if k < host_bit_count:
+                ip_binary[3 - i][7 - j] = False
+                k += 1
+            else:
+                ip_range_list[0] = ip_binary_to_ip_string(ip_binary)
+                flag = True
+                break
+        if flag:
+            break
+    k = 0
+    flag = False
+    for i in range(4):
+        for j in range(8):
+            if k < host_bit_count:
+                ip_binary[3 - i][7 - j] = True
+                k += 1
+            else:
+                ip_range_list[1] = ip_binary_to_ip_string(ip_binary)
+                flag = True
+                break
+        if flag:
+            break
+    return ip_range_list
+
+
 def ip_class(ip_string):
     """ TODO
 
