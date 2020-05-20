@@ -251,3 +251,13 @@ def ip_class(ip_string):
     if first_byte < 240:
         return 'D'
     return 'E'
+
+
+def main():
+    """ Main function
+    """
+    print("Main Function")
+
+
+if __name__ == '__main__':
+    main()
