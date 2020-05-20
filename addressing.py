@@ -93,6 +93,17 @@ def ip_string_to_ip_binary(ip_string):
     return ip_list_to_ip_binary(ip_string_to_ip_list(ip_string))
 
 
+def ip_binary_to_ip_string(ip_binary):
+    """ Change list of parts of a binary IP to string.
+
+    :param ip_binary: List of parts of a binary IP
+    :type ip_binary: list
+    :return: IP in string format
+    :rtype: str
+    """
+    return ip_list_to_ip_string(ip_binary_to_ip_list(ip_binary))
+
+
 def host_count(ip_string):
     """ Counting available hosts by IP address.
 
