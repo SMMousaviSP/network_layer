@@ -71,16 +71,26 @@ def ip_binary_to_ip_list(ip_binary):
     return [binary_to_integer(x) for x in ip_binary]
 
 
-def host_count(raw_ip):
+def ip_string_to_ip_binary(ip_string):
+    """ Change raw IP to binary IP.
+
+    :param ip_string: Raw IP
+    :type ip_string: str
+    :return: List of parts of an IP in binary
+    :rtype: list
+    """
+    return ip_list_to_ip_binary(ip_string_to_ip_list(ip_string))
+
+
+def host_count(ip_string):
     """ Counting available hosts by IP address.
 
-    :param ip: IP address in raw string format
-    :type ip: str
+    :param ip_string: IP address in raw string format
+    :type ip_string: str
     :return: Count of available host
     :rtype: int
     """
-    ip_list = ip_string_to_ip_list(raw_ip)
-    ip_binary = ip_list_to_ip_binary(ip_list)
+    ip_binary = ip_string_to_ip_binary(ip_string)
     summation = 0
     for part in reversed(ip_binary):
         for bit in reversed(part):
