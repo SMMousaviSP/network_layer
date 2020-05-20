@@ -123,6 +123,23 @@ def host_count(ip_string):
     return 2 ** summation
 
 
+def mask_ip(ip_string, mask_string):
+    """ TODO
+
+    :param ip_string: [description]
+    :type ip_string: [type]
+    :param mask_string: [description]
+    :type mask_string: [type]
+    """
+    ip_binary = ip_string_to_ip_binary(ip_string)
+    mask_binary = ip_string_to_ip_binary(mask_string)
+    network_ip = [[[] for _ in range(8)] for _ in range(4)]
+    for i in range(4):
+        for j in range(8):
+            network_ip[i][j] = ip_binary[i][j] and mask_binary[i][j]
+    return ip_binary_to_ip_string(network_ip)
+
+
 def ip_class(ip_string):
     """ TODO
 
