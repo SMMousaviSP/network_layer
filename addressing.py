@@ -160,7 +160,7 @@ def change_prefix_to_mask(prefix):
     return ip_binary_to_ip_string(mask_binary)
 
 
-def host_count_by_mask(mask_string):
+def available_bit(mask_string):
     """ TODO
 
     :param mask_string: [description]
@@ -175,8 +175,19 @@ def host_count_by_mask(mask_string):
             if bit == 0:
                 summation += 1
             else:
-                return 2 ** summation
-    return 2 ** summation
+                return summation
+    return summation
+
+
+def host_count_by_mask(mask_string):
+    """ TODO
+
+    :param mask_string: [description]
+    :type mask_string: [type]
+    :return: [description]
+    :rtype: [type]
+    """
+    return 2 ** available_bit(mask_string)
 
 
 def ip_class(ip_string):
