@@ -121,3 +121,24 @@ def host_count(ip_string):
             else:
                 return 2 ** summation
     return 2 ** summation
+
+
+def ip_class(ip_string):
+    """ TODO
+
+    :param ip_string: [description]
+    :type ip_string: [type]
+    :return: [description]
+    :rtype: [type]
+    """
+    ip_list = ip_string_to_ip_list(ip_string)
+    first_byte = ip_list[0]
+    if first_byte < 128:
+        return 'A'
+    if first_byte < 192:
+        return 'B'
+    if first_byte < 224:
+        return 'C'
+    if first_byte < 240:
+        return 'D'
+    return 'E'
